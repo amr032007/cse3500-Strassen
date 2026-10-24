@@ -11,6 +11,28 @@ helper module once it exists.
 """
 
 
+def strassen(A, B, leaf_size=1):
+    """Return the product A * B of two square matrices using Strassen's algorithm.
+
+    leaf_size: below or at this size, fall back to the naive triple loop.
+    Matrices whose size is not a power of two are zero-padded and the result
+    is trimmed back to n x n.
+    """
+    n = len(A)
+    if n == 0:
+        return []
+    if len(B) != n or any(len(row) != n for row in A) or any(len(row) != n for row in B):
+        raise ValueError("strassen() requires two square matrices of the same size")
+
+    size = _next_power_of_two(n)
+    if size != n:
+        A = _pad(A, size)
+        B = _pad(B, size)
+
+    C = _strassen_recursive(A, B, max(1, leaf_size))
+    return [row[:n] for row in C[:n]]
+
+
 def _strassen_recursive(A, B, leaf_size):
     n = len(A)
     if n <= leaf_size:
