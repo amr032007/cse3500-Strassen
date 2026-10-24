@@ -41,3 +41,10 @@ def _join(C11, C12, C21, C22):
 def _naive_multiply(A, B):
     n = len(A)
     return [[sum(A[i][k] * B[k][j] for k in range(n)) for j in range(n)] for i in range(n)]
+
+
+def _next_power_of_two(n):
+    size = 1
+    while size < n:
+        size *= 2
+    return size
