@@ -30,3 +30,9 @@ def _split(M):
         [row[:h] for row in M[h:]],
         [row[h:] for row in M[h:]],
     )
+
+
+def _join(C11, C12, C21, C22):
+    top = [r1 + r2 for r1, r2 in zip(C11, C12)]
+    bottom = [r1 + r2 for r1, r2 in zip(C21, C22)]
+    return top + bottom
