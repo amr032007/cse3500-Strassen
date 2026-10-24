@@ -48,3 +48,10 @@ def _next_power_of_two(n):
     while size < n:
         size *= 2
     return size
+
+
+def _pad(M, size):
+    n = len(M)
+    padded = [row + [0] * (size - n) for row in M]
+    padded += [[0] * size for _ in range(size - n)]
+    return padded
