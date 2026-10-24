@@ -44,3 +44,21 @@ Matrices are plain lists of lists.
   speed, since recursing all the way down to 1x1 has a lot of overhead.
 - Small helpers handle adding, subtracting, splitting, joining, and padding
   matrices.
+
+## strassen_v2.py (numpy)
+
+Uses numpy arrays, so adding, subtracting, and slicing out quadrants are
+single operations (`A[:mid, :mid]`, `A + B`).
+
+- Converts the inputs to numpy arrays, so lists of lists work too.
+- Base case: matrices of size 2 or smaller are multiplied directly with
+  `np.dot`.
+- Odd sizes: pads one zero row and column to make the size even, recurses, and
+  trims the extra row and column off the result. This happens at each level
+  where the size is odd, rather than padding to a power of two up front.
+- Computes the 7 products P1-P7 and combines them:
+  - C11 = P5 + P4 - P2 + P6
+  - C12 = P1 + P2
+  - C21 = P3 + P4
+  - C22 = P5 + P1 - P3 - P7
+- Joins the quadrants back together with `np.vstack` / `np.hstack`.
