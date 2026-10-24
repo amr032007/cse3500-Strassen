@@ -15,3 +15,7 @@ helper module once it exists.
 
 def _add(X, Y):
     return [[x + y for x, y in zip(rx, ry)] for rx, ry in zip(X, Y)]
+
+
+def _sub(X, Y):
+    return [[x - y for x, y in zip(rx, ry)] for rx, ry in zip(X, Y)]
