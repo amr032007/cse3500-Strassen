@@ -62,3 +62,11 @@ single operations (`A[:mid, :mid]`, `A + B`).
   - C21 = P3 + P4
   - C22 = P5 + P1 - P3 - P7
 - Joins the quadrants back together with `np.vstack` / `np.hstack`.
+
+## How these were written
+
+- **strassen.py** was generated with Claude (an AI assistant) as a working
+  reference implementation.
+- **strassen_v2.py** is my own implementation of the algorithm. Claude helped
+  fix two bugs in it: converting list inputs to numpy arrays so the 2D slicing
+  works, and padding odd-sized matrices so the quadrants split evenly.
