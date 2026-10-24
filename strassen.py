@@ -36,3 +36,8 @@ def _join(C11, C12, C21, C22):
     top = [r1 + r2 for r1, r2 in zip(C11, C12)]
     bottom = [r1 + r2 for r1, r2 in zip(C21, C22)]
     return top + bottom
+
+
+def _naive_multiply(A, B):
+    n = len(A)
+    return [[sum(A[i][k] * B[k][j] for k in range(n)) for j in range(n)] for i in range(n)]
