@@ -103,3 +103,9 @@ def _pad(M, size):
     padded = [row + [0] * (size - n) for row in M]
     padded += [[0] * size for _ in range(size - n)]
     return padded
+
+
+if __name__ == "__main__":
+    A = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    B = [[9, 8, 7], [6, 5, 4], [3, 2, 1]]
+    print(strassen(A, B))
