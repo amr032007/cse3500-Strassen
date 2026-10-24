@@ -19,3 +19,14 @@ def _add(X, Y):
 
 def _sub(X, Y):
     return [[x - y for x, y in zip(rx, ry)] for rx, ry in zip(X, Y)]
+
+
+def _split(M):
+    """Split an even-sized square matrix into four quadrants."""
+    h = len(M) // 2
+    return (
+        [row[:h] for row in M[:h]],
+        [row[h:] for row in M[:h]],
+        [row[:h] for row in M[h:]],
+        [row[h:] for row in M[h:]],
+    )
