@@ -1,6 +1,8 @@
 import numpy as np
 
 def strassen(A, B):
+    A = np.asarray(A)
+    B = np.asarray(B)
     n = len(A)
 
     if n <= 2:  # Base case
