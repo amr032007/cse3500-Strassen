@@ -8,6 +8,12 @@ def strassen(A, B):
     if n <= 2:  # Base case
         return np.dot(A, B)
 
+    # Odd size: pad with a zero row/column, multiply, then trim back to n x n
+    if n % 2 == 1:
+        A = np.pad(A, ((0, 1), (0, 1)))
+        B = np.pad(B, ((0, 1), (0, 1)))
+        return strassen(A, B)[:n, :n]
+
     # Partition matrices into submatrices
     mid = n // 2
     A11 = A[:mid, :mid]
