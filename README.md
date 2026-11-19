@@ -24,7 +24,7 @@ result (`strassen_v2.py` shows it in numpy's array format):
 `strassen_v2.py` requires numpy (`pip install numpy`). `strassen.py` has no
 dependencies.
 
-## strassen.py (pure Python)
+## strassen.py ( just Python)
 
 Matrices are plain lists of lists.
 
